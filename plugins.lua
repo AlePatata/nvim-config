@@ -1,7 +1,9 @@
 return {
+  -- Guess indent
   { 'NMAC427/guess-indent.nvim', opts = {} },
 
-  { 
+  -- Git signs
+  {
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -14,6 +16,7 @@ return {
     },
   },
 
+  -- Which-key
   {
     'folke/which-key.nvim',
     event = 'VimEnter',
@@ -28,6 +31,7 @@ return {
     },
   },
 
+  -- Colorscheme
   {
     'folke/tokyonight.nvim',
     priority = 1000,
@@ -41,33 +45,65 @@ return {
     end,
   },
 
-  { 
+  -- Todo comments
+  {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = { signs = false }
+    opts = { signs = false },
   },
 
+  -- Mini.nvim
   {
     'nvim-mini/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
       require('mini.surround').setup()
+
       local statusline = require 'mini.statusline'
       statusline.setup { use_icons = vim.g.have_nerd_font }
-      statusline.section_location = function() return '%2l:%-2v' end
+      statusline.section_location = function()
+        return '%2l:%-2v'
+      end
     end,
   },
 
+  -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
-      local filetypes = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local filetypes = {
+        'bash', 'c', 'diff', 'html', 'lua', 'luadoc',
+        'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc',
+      }
+
       require('nvim-treesitter').install(filetypes)
+
       vim.api.nvim_create_autocmd('FileType', {
         pattern = filetypes,
-        callback = function() vim.treesitter.start() end,
+        callback = function()
+          vim.treesitter.start()
+        end,
       })
     end,
   },
+}, {
+  ui = {
+    icons = vim.g.have_nerd_font and {} or {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      require = '🌙',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
+  },
 }
+
