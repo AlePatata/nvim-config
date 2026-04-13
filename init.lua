@@ -14,9 +14,6 @@ vim.g.have_nerd_font = true
 
 -- Make line numbers default
 vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -80,11 +77,11 @@ vim.opt.softtabstop = 4
 vim.opt.smartindent = true
 
 -- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
-
--- Clear highlights on search when pressing <Esc> in normal mode
---  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- swap lines
+vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv")
 
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts

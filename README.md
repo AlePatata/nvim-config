@@ -4,4 +4,4 @@ thanks to Felipe Jara, he pushed me to finally use this shit, hopelly i wont reg
 
 Remember: the configuration is in `Users/{user}/AppData/Local/nvim/init.lua`
 
-
+`~/.config/nvim`
